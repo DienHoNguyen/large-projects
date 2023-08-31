@@ -117,8 +117,31 @@ money = 1500
 position = 0
 
 # Define a function to roll the dice
-def roll_dice():
-    return random.randint(1, 6) + random.randint(1, 6)
+def roll_dices():
+    global position
+    global move
+    dice1 = random.randint(1, 6)
+    dice2 = random.randint(1, 6)
+    if dice1 == dice2:
+        roll_count = 1
+        while roll_count < 3:
+            dice1 = random.randint(1, 6)
+            dice2 = random.randint(1, 6)
+            if dice1 == dice2:
+                roll_count += 1
+            else:
+                break
+        if roll_count == 3:
+            position = 10
+            move = 0
+            print("You rolled the same number three times in a row and got sent to jail!")
+            return
+    move = dice1 + dice2
+    position += move
+    if position > 39:
+        position -= 40
+        print("You passed Go and collected $200!")
+    return move
 
 # Define a function to check if a property is owned
 def is_owned(property):
