@@ -20,7 +20,23 @@ chance = {
     15: 'Your building loan matures. Receive $150.'
 }
 community_chest = {
-    
+    0: 'Advance to "Go". (Collect $200)',
+    1: 'Bank error in your favor. Collect $200.',
+    2: 'Doctors fees. Pay $50.',
+    3: 'From sale of stock you get $50.',
+    4: 'Get Out of Jail Free. This card may be kept until needed or sold/traded.',
+    5: 'Go to Jail. Go directly to jail. Do not pass Go, Do not collect $200.',
+    6: 'Grand Opera Night. Collect $50 from every player for opening night seats.',
+    7: 'Holiday Fund matures. Receive $100.',
+    8: 'Income tax refund. Collect $20.',
+    9: 'It is your birthday. Collect $10 from every player.',
+    10: 'Life insurance matures. Collect $100',
+    11: 'Hospital Fees. Pay $50.',
+    12: 'School fees. Pay $50.',
+    13: 'Receive $25 consultancy fee.',
+    14: 'You are assessed for street repairs: Pay $40 per house and $115 per hotel you own.',
+    15: 'You have won second prize in a beauty contest. Collect $10.',
+    16: 'You inherit $100.'
 }
 # Define the properties and their positions
 properties = {
@@ -117,31 +133,8 @@ money = 1500
 position = 0
 
 # Define a function to roll the dice
-def roll_dices():
-    global position
-    global move
-    dice1 = random.randint(1, 6)
-    dice2 = random.randint(1, 6)
-    if dice1 == dice2:
-        roll_count = 1
-        while roll_count < 3:
-            dice1 = random.randint(1, 6)
-            dice2 = random.randint(1, 6)
-            if dice1 == dice2:
-                roll_count += 1
-            else:
-                break
-        if roll_count == 3:
-            position = 10
-            move = 0
-            print("You rolled the same number three times in a row and got sent to jail!")
-            return
-    move = dice1 + dice2
-    position += move
-    if position > 39:
-        position -= 40
-        print("You passed Go and collected $200!")
-    return move
+def roll_dice():
+    return random.randint(1, 6) + random.randint(1, 6)
 
 # Define a function to check if a property is owned
 def is_owned(property):
