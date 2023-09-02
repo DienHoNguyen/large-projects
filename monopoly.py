@@ -195,6 +195,32 @@ while True:
         print("Community Chest")
     elif position in [7, 22, 36]:
         print("Chance")
+        chancecard = random.randint(0, 4)
+        print(chance[chancecard])
+        if chancecard == 0:
+            position = 0
+            player_money[player]+= 200
+        elif chancecard == 1:
+            if position >= 24:
+                player_money[player]+= 200
+            else:
+                continue
+            position = 24
+        elif chancecard == 2:
+            if position >= 11:
+                player_money[player]+= 200
+            else:
+                continue
+            position = 11
+        elif chancecard == 3:
+            if position >= 12 and position <= 28:
+                position = 28
+            elif position >= 28:
+                position = 12
+            elif position <= 12:
+                position = 12
+        elif chancecard == 4:
+            print("IDK")
     elif position == 30:
         print("Go to Jail")
         position = 10
