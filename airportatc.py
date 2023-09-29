@@ -1,3 +1,4 @@
+#uhhh idk
 import random
 
 airport = {
